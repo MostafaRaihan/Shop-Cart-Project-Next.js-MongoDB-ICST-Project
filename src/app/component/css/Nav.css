@@ -1,12 +1,13 @@
-/* Nav.css */
 .navbar {
   background-color: #1f1f1f;
-  padding: 0.8rem 2rem;
-  position: sticky;
+  padding: 1rem 2rem;
+  position: fixed;
+  width:100%;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  font-family: arial;
+  box-shadow: 0 0 15px #ff6600;
 }
 
 .navbar-container {
@@ -16,16 +17,22 @@
 }
 
 .logo {
-  color: #fff;
+  color: #ff6600;
   text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #fff;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 1.8rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
   align-items: center;
@@ -46,26 +53,25 @@
 
 .navbar ul li a:hover,
 .navbar ul li button:hover {
-  background-color: #ff4c4c;
+  background-color: #ff6600;
   transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(255,76,76,0.5);
+  box-shadow: 0 0px 15px #ff6600;
 }
 
 .navbar ul li button {
-  background-color: #ff4c4c;
+  background-color: #ff6600;
   color: #fff;
 }
 
 .navbar ul li button:hover {
-  background-color: #e03e3e;
+  background-color: #ff6600;
 }
 
-/* Hamburger for mobile */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 28px;
+  width: 30px;
   height: 20px;
   cursor: pointer;
 }
@@ -74,7 +80,7 @@
   display: block;
   height: 3px;
   width: 100%;
-  background-color: #fff;
+  background-color: #ff6600;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -91,7 +97,6 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -107,6 +112,7 @@
     gap: 1rem;
     padding: 1rem 0;
     display: none;
+    transition: max-height 0.3s ease;
   }
 
   .navbar ul.active {
@@ -122,11 +128,12 @@
 
 @media (max-width: 480px) {
   .logo {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
+
   .navbar ul li a,
   .navbar ul li button {
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding: 0.4rem 0;
   }
 }

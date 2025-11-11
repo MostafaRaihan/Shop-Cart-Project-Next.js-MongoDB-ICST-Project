@@ -35,9 +35,5 @@ export const config = {
 		"/cart",
 		"/checkout",
 		"/dashboard/:path*",
-		"/api/user/:path*",
-		"/api/admin/:path*",
 	],
 };
-
-// Request -> Middleware ->

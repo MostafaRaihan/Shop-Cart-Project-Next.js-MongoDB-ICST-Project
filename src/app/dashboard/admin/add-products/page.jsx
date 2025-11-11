@@ -7,21 +7,21 @@ const AddProduct = () => {
 			<form className="add-product-form" action={addProduct}>
 				<h2 className="form-title">Add New Product</h2>
 
-				<label htmlFor="title">Title</label>
+				<label htmlFor="title">Product Title</label>
 				<input
 					id="title"
 					type="text"
 					name="title"
-					placeholder="Enter product title"
+					placeholder="Enter Product Title"
 					required
 				/>
 
-				<label htmlFor="price">Price</label>
+				<label htmlFor="price">Product Price</label>
 				<input
 					id="price"
 					type="number"
 					name="price"
-					placeholder="Enter product price"
+					placeholder="Enter Product Price"
 					required
 				/>
 
@@ -30,11 +30,11 @@ const AddProduct = () => {
 					id="image"
 					type="text"
 					name="image"
-					placeholder="Enter image link"
+					placeholder="Enter Image URL"
 					required
 				/>
 
-				<button type="submit">Add Product</button>
+				<button type="submit">Add New Product</button>
 			</form>
 		</div>
 	);

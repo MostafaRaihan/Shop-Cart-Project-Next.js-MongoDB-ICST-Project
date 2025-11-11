@@ -20,7 +20,7 @@ export default function CheckoutPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setShipping((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" })); // Clear error on change
+    setErrors((prev) => ({ ...prev, [name]: "" })); 
   };
 
   const validateForm = () => {
@@ -46,8 +46,8 @@ export default function CheckoutPage() {
     }
 
     console.log("Order Submitted", { shipping, cart });
-    alert("Order Placed Successfully!");
-    clearCart(); // Clear cart after checkout
+    alert("Order Placed Successfully! Thanks For Shopping");
+    clearCart(); 
     setShipping({
       name: "",
       email: "",
@@ -62,9 +62,11 @@ export default function CheckoutPage() {
 
   return (
     <div className="checkout-page">
+      <br />
+      <br />
+      <br />
       <h1>Checkout</h1>
       <div className="checkout-container">
-        {/* Shipping Details Form */}
         <form className="checkout-form" onSubmit={handleSubmit}>
           <h2>Shipping Details</h2>
           {["name", "email", "address", "city", "postalCode", "country"].map((field) => (
@@ -82,7 +84,6 @@ export default function CheckoutPage() {
           ))}
         </form>
 
-        {/* Order Summary */}
         <div className="order-summary">
           <h2>Order Summary</h2>
           {cart.length === 0 ? (
@@ -92,12 +93,12 @@ export default function CheckoutPage() {
               {cart.map((item, index) => (
                 <li key={index}>
                   <span>{item.title} x {item.quantity}</span>
-                  <span>${(item.price * item.quantity).toFixed(2)}</span>
+                  <span><b className="price">৳ </b>{(item.price * item.quantity).toFixed(2)}</span>
                 </li>
               ))}
             </ul>
           )}
-          <h3>Total: ${totalPrice.toFixed(2)}</h3>
+          <h3>Total: <b className="price">৳ </b>{totalPrice.toFixed(2)}</h3>
           <button className="btn-place-order" onClick={handleSubmit}>
             Place Order
           </button>

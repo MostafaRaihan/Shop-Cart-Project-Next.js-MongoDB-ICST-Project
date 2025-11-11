@@ -1,8 +1,8 @@
 /* ===== Global Styles ===== */
 body {
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #e0e0e0;
+  font-family: arial;
+  background-color: #000;
+  color: #fff;
   margin: 0;
   padding: 0;
 }
@@ -21,7 +21,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* ===== Checkout Container ===== */
 .checkout-container {
   display: flex;
   gap: 40px;
@@ -29,13 +28,11 @@ body {
   justify-content: center;
 }
 
-/* ===== Shipping Form ===== */
 .checkout-form {
   flex: 1 1 450px;
   background-color: #1e1e1e;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -58,7 +55,7 @@ body {
   flex-direction: column;
   font-weight: 500;
   color: #ccc;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .checkout-form input {
@@ -73,28 +70,26 @@ body {
 }
 
 .checkout-form input:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+  border-color: #ff6600;
+  box-shadow: 0 0 5px #ff6600;
   outline: none;
 }
 
 .input-error {
-  border-color: #e74c3c;
+  border-color: #ff0000;
 }
 
 .error-msg {
-  color: #e74c3c;
-  font-size: 0.85rem;
-  margin-top: 4px;
+  color: #ff0000;
+  font-size: 1rem;
+  margin-top: 5px;
 }
 
-/* ===== Order Summary ===== */
 .order-summary {
   flex: 1 1 350px;
   background-color: #1e1e1e;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
   height: fit-content;
   transition: transform 0.3s ease;
 }
@@ -136,11 +131,10 @@ body {
   color: #fff;
 }
 
-/* ===== Place Order Button ===== */
 .btn-place-order {
   width: 100%;
   padding: 15px 0;
-  background: linear-gradient(90deg, #4a90e2 0%, #357ABD 100%);
+  background-color:#ff6600;
   color: #fff;
   font-weight: 700;
   font-size: 1rem;
@@ -148,16 +142,21 @@ body {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0px 15px #000;
 }
 
 .btn-place-order:hover {
-  background: linear-gradient(90deg, #357ABD 0%, #2a5a9f 100%);
+  background-color: #008000;
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
-/* ===== Responsive ===== */
+.price {
+  color: #ff6600;
+  font-weight:800;
+  font-size: 20px;
+}
+
 @media (max-width: 1024px) {
   .checkout-container {
     gap: 30px;

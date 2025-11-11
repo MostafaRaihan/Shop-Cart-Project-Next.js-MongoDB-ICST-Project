@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useCart } from "./CartContext";
 import { useState } from "react";
-import "./Nav.css";
+import "./css/Nav.css";
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -19,10 +19,9 @@ const Nav = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link href="/" className="logo">
-          Interactive Shop
+          Raihan Interactive Shop
         </Link>
 
-        {/* Hamburger menu for mobile */}
         <div
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import classes from "../login/login.module.css";
+import classes from "@/app/login/login.module.css";
 
 const Register = () => {
 	const [name, setName] = useState("");
@@ -39,7 +39,7 @@ const Register = () => {
 	return (
 		<main className={classes.body}>
 			<section className={classes.auth}>
-				<h1>New User Register</h1>
+				<h1>Register a New User</h1>
 				<hr />
 				<br />
 				<form onSubmit={submitHandler}>

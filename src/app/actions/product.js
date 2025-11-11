@@ -1,32 +1,28 @@
 "use server";
-import { revalidatePath, updateTag } from "next/cache";
 
-// backend, db, auth
+import { updateTag } from "next/cache";
+import { getBaseUrl } from "@/app/utils/api";
+
+export const getProduct = async (page) => {
+	const res = await fetch(`${getBaseUrl()}/api/products?page=${page}`);
+	if (!res.ok) throw new Error("Failed to fetch products");
+	return res.json();
+};
 
 export const addProduct = async (formData) => {
-	console.log(formData.get("title"), "Product Title");
-	console.log(formData.get("price"), "Product Price");
-
 	const product = {
 		title: formData.get("title"),
 		price: Number(formData.get("price")),
 		image: formData.get("image"),
 	};
-
-	console.log("product", product);
-	await fetch(`http://localhost:3000/api/product`, {
+	const res = await fetch(`${getBaseUrl()}/api/products`, {
 		method: "POST",
+		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(product),
-		headers: {
-			"Content-Type": "application/json",
-		},
 	});
-	// revalidateTag("products");
-	// revalidatePath("/shop");
-	updateTag("products");
-	// revalidatePath('/admin/products')
-	// regeneration
-};
 
-// isr -> incremental static re-generation
-// ssg -> static site generation
+	if (!res.ok) throw new Error("Failed to add product");
+
+	updateTag("products");
+	return res.json();
+};

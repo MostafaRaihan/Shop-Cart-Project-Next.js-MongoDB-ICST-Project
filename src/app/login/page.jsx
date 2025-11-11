@@ -37,7 +37,7 @@ export default function Login() {
 	return (
 		<main className={classes.body}>
 			<section className={classes.auth}>
-				<h1>Login</h1>
+				<h1>Login User</h1>
 				<hr />
 				<br />
 				<form onSubmit={submitHandler}>

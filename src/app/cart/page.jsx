@@ -11,17 +11,20 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <h1 className="cart-title">Your Shopping Cart</h1>
-
+      <br />
+      <br />
+      <br />
+      <h1 className="cart-title">Your Shopping Items</h1>
       {cart.length === 0 ? (
-        <p className="empty-cart">Your cart is empty 😢</p>
+        <p className="empty-cart">No Shopping Item Found 😢</p>
       ) : (
         <>
           <div className="cart-table-wrapper">
             <table className="cart-table">
               <thead>
                 <tr>
-                  <th>Product</th>
+                  <th>Image</th>
+                  <th>Product Name</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Subtotal</th>
@@ -39,14 +42,14 @@ const Cart = () => {
           <div className="cart-footer">
             <div className="total-section">
               <h2>Total:</h2>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span><b>৳ </b>{totalPrice.toFixed(2)}</span>
             </div>
             <div className="cart-buttons">
               <button className="btn-clear" onClick={clearCart}>
                 Clear Cart
               </button>
               <Link href="/checkout">
-                <button className="btn-checkout">Proceed to Checkout</button>
+                <button className="btn-checkout"> Go Checkout</button>
               </Link>
             </div>
           </div>

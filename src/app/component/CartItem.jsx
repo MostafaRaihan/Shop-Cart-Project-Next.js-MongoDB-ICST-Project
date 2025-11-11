@@ -1,7 +1,7 @@
 "use client";
 import { useCart } from "./CartContext";
 import { useState, useEffect } from "react";
-import "./Cart.css";
+import "./css/Cart.css";
 
 const CartItem = ({ item }) => {
   const { updateQuantity, removeFromCart } = useCart();
@@ -15,27 +15,27 @@ const CartItem = ({ item }) => {
     <tr className="cart-item">
       <td>
         <div className="cart-product-image">
-          <img src={item.image} alt={item.name} />
+          <img src={item.image} alt={item.title} />
         </div>
       </td>
-      <td>{item.name}</td>
-      <td>${item.price}</td>
+      <td>{item.title}</td>
+      <td> <b className="price">৳ </b>{item.price}</td>
       <td>
         <div className="quantity-buttons">
-          <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>-</button>
+          <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>➖</button>
           <input
             type="number"
             value={quantity}
             min="1"
             onChange={e => setQuantity(Math.max(1, Number(e.target.value)))}
           />
-          <button onClick={() => setQuantity(q => q + 1)}>+</button>
+          <button onClick={() => setQuantity(q => q + 1)}>➕</button>
         </div>
       </td>
-      <td>${item.price * quantity}</td>
+      <td> <b className="price">৳ </b>{item.price * quantity}</td>
       <td>
         <button className="btn-remove" onClick={() => removeFromCart(item.id)}>
-          x
+          ❌
         </button>
       </td>
     </tr>
