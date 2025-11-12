@@ -45,11 +45,9 @@ const Cart = () => {
               <span><b>৳ </b>{totalPrice.toFixed(2)}</span>
             </div>
             <div className="cart-buttons">
-              <button className="btn-clear" onClick={clearCart}>
-                Clear Cart
-              </button>
+              <button className="btn-clear" onClick={clearCart}>Clear Your Cart Item</button>
               <Link href="/checkout">
-                <button className="btn-checkout"> Go Checkout</button>
+                <button className="btn-checkout"> Go To Checkout Page</button>
               </Link>
             </div>
           </div>

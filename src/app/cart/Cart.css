@@ -3,7 +3,7 @@
   margin: 50px auto;
   padding: 0 20px;
   color: #e0e0e0;
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .cart-title {
@@ -27,6 +27,7 @@
 
 .cart-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   background-color: #1e1e1e;
   border-radius: 12px;
@@ -44,6 +45,8 @@
 .cart-table th {
   background-color: #2a2a2a;
   color: #fff;
+  text-transform: uppercase;
+  font-size: 0.95rem;
 }
 
 .cart-table tr:last-child td {
@@ -76,36 +79,26 @@
 
 .total-section span b {
   font-size: 30px;
-  font-weight:800;
+  font-weight: 800;
 }
-
 
 .cart-buttons {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  margin-top: 15px;
 }
 
-.btn-clear,
-.btn-checkout {
+.btn-checkout,
+.btn-clear {
+  flex: 1;
   padding: 15px 25px;
   font-weight: 600;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-.btn-clear {
-  background-color: #ff6600;
-  color: #fff;
-  font-size:25px;
-}
-
-.btn-clear:hover {
-  background-color: #ff0000;
-  color: white;
-  transform: translateY(-2px);
+  box-shadow: 0 0 5px #000;
 }
 
 .btn-checkout {
@@ -115,6 +108,16 @@
 
 .btn-checkout:hover {
   background-color: #0000ff;
+  transform: translateY(-2px);
+}
+
+.btn-clear {
+  background-color: #ff6600;
+  color: #fff;
+}
+
+.btn-clear:hover {
+  background-color: #ff0000;
   transform: translateY(-2px);
 }
 
@@ -129,16 +132,18 @@
   .cart-table th,
   .cart-table td {
     padding: 12px 10px;
+    font-size: 0.9rem;
   }
 
   .total-section {
     font-size: 1.2rem;
+    flex-wrap: wrap;
   }
 
-  .btn-clear,
-  .btn-checkout {
-    width: 100%;
-    text-align: center;
+  .cart-buttons .btn-checkout,
+  .cart-buttons .btn-clear {
+    flex: 100% 100% ;
+    box-sizing: border-box;
   }
 }
 
@@ -149,5 +154,20 @@
 
   .cart-title {
     font-size: 2rem;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    padding: 10px 5px;
+    font-size: 0.85rem;
+  }
+
+  .cart-buttons {
+    gap: 10px;
+  }
+
+  .cart-buttons .btn-checkout,
+  .cart-buttons .btn-clear {
+    padding: 12px 10px;
   }
 }
