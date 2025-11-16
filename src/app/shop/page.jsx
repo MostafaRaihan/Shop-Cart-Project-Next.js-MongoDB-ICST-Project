@@ -37,13 +37,17 @@ const Shop = () => {
   }, [session]);
 
   useEffect(() => {
-    getProduct(page)
-      .then((data) => {
-        setProducts(data.products || []);
-        setTotalPages(data.totalPages || 1);
-      })
-      .catch(console.error);
-  }, [page]);
+  const controller = new AbortController();
+  getProduct(page, { signal: controller.signal })
+    .then((data) => {
+      setProducts(data.products || []);
+      setTotalPages(data.totalPages || 1);
+    })
+    .catch(console.error);
+
+  return () => controller.abort();
+}, [page]);
+
 
   return (
     <div style={{ padding: "2rem" }}>

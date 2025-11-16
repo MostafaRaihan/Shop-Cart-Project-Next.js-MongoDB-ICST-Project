@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import Link from "next/link";
-import Shop from "./shop/page";
+import Shop from "@/app/shop/page";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {

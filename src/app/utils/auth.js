@@ -47,32 +47,16 @@ export const authOptions = {
 		}),
 	],
 	callbacks: {
-		async signIn({ user }) {
-			console.log(user, "user");
-			return !!user;
-		},
 		async jwt({ token, user }) {
-			console.log(user, "user");
-			if (user) {
-				token.user = {
-					id: user._id,
-					email: user.email,
-					name: user.name,
-					role: user.role,
-				};
-			}
+			if (user) token.user = { id: user._id, email: user.email, name: user.name, role: user.role };
 			return token;
 		},
-
 		async session({ session, token }) {
-			if (token.user) {
-				session.user = token.user;
-			}
+			if (token.user) session.user = token.user;
 			return session;
 		},
-	},
-	secret: process.env.NEXTAUTH_SECRET,
-	pages: {
-		signIn: "/login",
-	},
+		},
+		secret: process.env.NEXTAUTH_SECRET,
+		pages: { signIn: "/login" },
+
 };

@@ -17,10 +17,7 @@ const connectDB = async () => {
     if (mongoose.connection.readyState >= 1) return; // Already connected
 
     try {
-        await mongoose.connect(getMongoUri(), {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(getMongoUri()); // শুধু URI লাগবে
         console.log("MongoDB Connected");
     } catch (error) {
         console.error("MongoDB Connection Error:", error);
@@ -29,3 +26,4 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+

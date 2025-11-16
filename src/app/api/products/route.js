@@ -30,7 +30,6 @@ export async function GET(req) {
 	const { searchParams } = new URL(req.url);
 
 	const page = searchParams.get("page") || "1";
-	const currentPage = Number(page) || 1;
 
 	const pageSize = 4;
 	try {
@@ -65,8 +64,8 @@ export async function POST(request) {
 	const body = await request.json();
 	try {
 		const newProduct = await Product.create(body);
-		return Response.json(newProduct, { status: 201 });
+		return NextResponse.json(newProduct, { status: 201 }); // ✅
 	} catch (error) {
-		return Response.json({ error: "Failed To Create Product" });
+		return NextResponse.json({ error: "Failed To Create Product" }, { status: 500 });
 	}
 }
