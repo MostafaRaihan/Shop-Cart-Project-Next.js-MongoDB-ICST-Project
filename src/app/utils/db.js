@@ -14,10 +14,10 @@ import mongoose from "mongoose";
 import { getMongoUri } from "./config"; 
 
 const connectDB = async () => {
-    if (mongoose.connection.readyState >= 1) return; // Already connected
+    if (mongoose.connection.readyState >= 1) return;
 
     try {
-        await mongoose.connect(getMongoUri()); // শুধু URI লাগবে
+        await mongoose.connect(getMongoUri());
         console.log("MongoDB Connected");
     } catch (error) {
         console.error("MongoDB Connection Error:", error);
