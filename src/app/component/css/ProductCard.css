@@ -2,7 +2,7 @@
   background-color: #1e2227;
   border: 1px solid #2f353b; 
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0px 15px #ff6600;
   overflow: hidden;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
