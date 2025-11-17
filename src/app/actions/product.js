@@ -4,7 +4,7 @@ import { updateTag } from "next/cache";
 import { getBaseUrl } from "@/app/utils/config";
 
 export const getProduct = async (page) => {
-	const res = await fetch(`https://${getBaseUrl()}/api/products?page=${page}`);
+	const res = await fetch(`${getBaseUrl()}/api/products?page=${page}`);
 	if (!res.ok) throw new Error("Failed to fetch products");
 	return res.json();
 };

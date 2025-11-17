@@ -4,17 +4,19 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import ProductCard from "@/app/component/ProductCard";
 import { useCart } from "@/app/component/CartContext";
-import { getBaseUrl } from "@/app/utils/config";
 import PageSwitch from "@/app/component/PageSwitch";
 import { useSearchParams } from "next/navigation";
 
+// Fetch products from API
 const getProduct = async (page) => {
-  const baseUrl = getBaseUrl();
-  const res = await fetch(`${baseUrl}/api/products?page=${page}`);
-  if (!res.ok) throw new Error("Failed to fetch products");
-
-  const data = await res.json();
-  return data;
+  try {
+    const res = await fetch(`/api/products?page=${page}`);
+    if (!res.ok) throw new Error("Failed to fetch products");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return { products: [], totalPages: 1 };
+  }
 };
 
 const Shop = () => {
@@ -26,28 +28,22 @@ const Shop = () => {
   const { addToCart } = useCart();
   const { data: session } = useSession();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = !!session;
 
   useEffect(() => {
-    if (session) {
-      setIsLoggedIn(true); 
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, [session]);
+    let isMounted = true;
 
-  useEffect(() => {
-  const controller = new AbortController();
-  getProduct(page, { signal: controller.signal })
-    .then((data) => {
-      setProducts(data.products || []);
-      setTotalPages(data.totalPages || 1);
-    })
-    .catch(console.error);
+    getProduct(page).then((data) => {
+      if (isMounted) {
+        setProducts(data.products || []);
+        setTotalPages(data.totalPages || 1);
+      }
+    });
 
-  return () => controller.abort();
-}, [page]);
-
+    return () => {
+      isMounted = false;
+    };
+  }, [page]);
 
   return (
     <div style={{ padding: "2rem" }}>
@@ -58,26 +54,26 @@ const Shop = () => {
           gap: "1.5rem",
         }}
       >
-        {products.length ? (
+        {products.length > 0 ? (
           products.map((product) => (
             <ProductCard
               key={product._id}
               product={product}
               onAddToCart={() => addToCart(product)}
-              isLoggedIn={isLoggedIn} 
+              isLoggedIn={isLoggedIn}
             />
           ))
         ) : (
           <p>No products available.</p>
         )}
       </div>
+
       <PageSwitch totalPages={totalPages} currentPage={page} pathname="/shop" />
     </div>
   );
 };
 
 export default Shop;
-
 
 
 // import { useEffect, useState } from "react";
